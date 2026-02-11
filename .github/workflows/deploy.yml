@@ -1,0 +1,31 @@
+name: Deploy Trigger.dev Tasks
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Deploy to Trigger.dev (self-hosted)
+        run: npx trigger.dev deploy --self-hosted --api-url "$TRIGGER_API_URL"
+        env:
+          TRIGGER_API_URL: ${{ secrets.TRIGGER_API_URL }}
+          TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}

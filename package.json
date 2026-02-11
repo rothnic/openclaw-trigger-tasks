@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@trigger.dev/sdk": "^4.0.5",
+    "@types/pdf-parse": "^1.1.5",
+    "google-auth-library": "^10.5.0",
+    "googleapis": "^171.4.0",
+    "openai": "^6.21.0",
+    "pdf-parse": "^2.4.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@trigger.dev/build": "^4.0.5"
+  }
+}
