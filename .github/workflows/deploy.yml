@@ -25,7 +25,7 @@ jobs:
           fi
 
       - name: Deploy to Trigger.dev (self-hosted)
-        run: npx trigger.dev deploy --self-hosted --api-url "$TRIGGER_API_URL"
+        run: npx trigger.dev deploy --api-url "$TRIGGER_API_URL"
         env:
           TRIGGER_API_URL: ${{ secrets.TRIGGER_API_URL }}
           TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
